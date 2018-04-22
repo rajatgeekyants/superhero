@@ -1,16 +1,19 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import actions from './actions';
+import './App.css';
 
 function App({char, searchTerm, searchTermChanged}) {
   return (
     <section>
-      <h1 style={{textAlign: 'center'}}>DC Superheroes</h1>
+      <div id="header">
+        <h1>DC Superheroes</h1>
+        <h3>A List of Major DC Superheroes</h3>
+      </div>
 
       <form>
-        <div>
+        <div className="search">
           <input
-            style={{width: '100%'}}
             type="text"
             name="search"
             placeholder="Search"
@@ -20,32 +23,22 @@ function App({char, searchTerm, searchTermChanged}) {
         </div>
       </form>
 
-      <table style={{width: '100%'}}>
+      <table>
         <thead>
-          <tr style={{textAlign: 'left'}}>
-            <th style={{textAlign: 'center'}}>Name</th>
-            <th style={{textAlign: 'center'}}>Alter Ego</th>
-            <th style={{textAlign: 'center'}}>First Appearance</th>
-            <th style={{textAlign: 'center'}}>View</th>
+          <tr style={{textAlign: 'center'}}>
+            <th>Name</th>
+            <th>Alter Ego</th>
+            <th>First Appearance</th>
+            <th>View</th>
           </tr>
         </thead>
         <tbody>
           {char.map(curChar => (
             <tr key={curChar.name}>
-              <td style={{textAlign: 'center'}}>{curChar.name}</td>
-              <td style={{textAlign: 'center'}}>{curChar.alter_ego}</td>
-              <td style={{textAlign: 'center'}}>{curChar.first_appearance}</td>
-              <img
-                src={require(`./images/View/${curChar.name}.png`)}
-                style={{
-                  display: 'flex',
-                  alignSelf: 'center',
-                  justifySelf: 'center',
-                  paddingLeft: '5rem',
-                  paddingBottom: '5rem',
-                  left: '-50%',
-                }}
-              />
+              <td>{curChar.name}</td>
+              <td>{curChar.alter_ego}</td>
+              <td>{curChar.first_appearance}</td>
+              <img src={require(`./images/View/${curChar.name}.png`)} />
             </tr>
           ))}
         </tbody>
