@@ -1,14 +1,16 @@
 import React from 'react';
+import './App.css';
 
 function App({char, searchTerm, searchTermChanged}) {
   return (
     <section>
-      <h1 style={{textAlign: 'center'}}>DC Superheroes</h1>
-
+      <div id="header">
+        <h1>DC Superheroes</h1>
+        <h3>A List of Major DC Superheroes</h3>
+      </div>
       <form>
-        <div>
+        <div className="search">
           <input
-            style={{width: '100%'}}
             type="text"
             name="search"
             placeholder="Search"
@@ -18,9 +20,9 @@ function App({char, searchTerm, searchTermChanged}) {
         </div>
       </form>
 
-      <table style={{width: '100%'}}>
+      <table>
         <thead>
-          <tr style={{textAlign: 'left'}}>
+          <tr style={{textAlign: 'center'}}>
             <th>Name</th>
             <th>Alter Ego</th>
             <th>First Appearance in</th>
