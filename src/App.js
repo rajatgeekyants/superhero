@@ -1,6 +1,4 @@
 import React from 'react';
-import {connect} from 'react-redux';
-import actions from './actions';
 
 function App({char, searchTerm, searchTermChanged}) {
   return (
@@ -23,29 +21,19 @@ function App({char, searchTerm, searchTermChanged}) {
       <table style={{width: '100%'}}>
         <thead>
           <tr style={{textAlign: 'left'}}>
-            <th style={{textAlign: 'center'}}>Name</th>
-            <th style={{textAlign: 'center'}}>Alter Ego</th>
-            <th style={{textAlign: 'center'}}>First Appearance</th>
-            <th style={{textAlign: 'center'}}>View</th>
+            <th>Name</th>
+            <th>Alter Ego</th>
+            <th>First Appearance in</th>
+            <th>Image</th>
           </tr>
         </thead>
         <tbody>
           {char.map(curChar => (
             <tr key={curChar.name}>
-              <td style={{textAlign: 'center'}}>{curChar.name}</td>
-              <td style={{textAlign: 'center'}}>{curChar.alter_ego}</td>
-              <td style={{textAlign: 'center'}}>{curChar.first_appearance}</td>
-              <img
-                src={require(`./images/View/${curChar.name}.png`)}
-                style={{
-                  display: 'flex',
-                  alignSelf: 'center',
-                  justifySelf: 'center',
-                  paddingLeft: '5rem',
-                  paddingBottom: '5rem',
-                  left: '-50%',
-                }}
-              />
+              <td>{curChar.name}</td>
+              <td>{curChar.alter_ego}</td>
+              <td>{curChar.first_appearance}</td>
+              <img src={require(`./images/View/${curChar.name}.png`)} />
             </tr>
           ))}
         </tbody>
@@ -54,4 +42,4 @@ function App({char, searchTerm, searchTermChanged}) {
   );
 }
 
-export default connect(store => store, actions)(App);
+export default App;
